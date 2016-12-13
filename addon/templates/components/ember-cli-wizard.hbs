@@ -1,0 +1,45 @@
+{{#if showHeading}}
+    <div class="row wizard-header">
+        <div class="{{if showDelete 'col-xs-10' 'col-xs-12'}} no-padding">
+            <ul class="nav nav-pills col-xs-12">
+                {{#each wizardData as |item|}}
+                    <li role="presentation" class="{{if (eq currentStep item.step_id) 'active' 'disabled'}}">
+                        <a href="#" {{action 'handleNavClick'}}>{{item.header_label}}</a>
+                    </li>
+                {{/each}}
+            </ul>
+        </div>
+        {{#if showDelete}}
+            <div class="col-xs-2 no-padding">
+                <button {{action "deleteAction"}}
+                    class="pull-right delete-config-button"
+                    data-toggle="tooltip"
+                    data-placement="bottom"
+                    title="Delete Configuration Object">
+                        <span class="glyphicon glyphicon-trash" />
+                </button>
+            </div>
+        {{/if}}
+    </div>
+{{/if}}
+
+<div class="row panelWrapper {{if isAnimating 'animating'}}">
+    {{yield (hash currentStep=currentStep animating=isAnimating direction=direction step=(component 'wizard-step'))}}
+</div>
+
+<div class="row wizard-footer">
+    <button class="btn btn-default" {{action "decrementStep"}}>
+        {{#if isFirstStep}}
+            Cancel
+        {{else}}
+            Previous
+        {{/if}}
+    </button>
+    <button class="btn btn-primary" {{action "incrementStep"}}>
+        {{#if isLastStep}}
+            Finish
+        {{else}}
+            Next
+        {{/if}}
+    </button>
+</div>

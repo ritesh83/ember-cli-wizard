@@ -1,7 +1,27 @@
 {
-  "name": "ember-cli-wizard",
+  "name": "loadables",
   "dependencies": {
-    "ember": "~2.8.0",
-    "ember-cli-shims": "0.1.1"
+    "ember": "lts-2-4",
+    "ember-cli-shims": "0.1.1",
+    "ember-cli-test-loader": "0.2.2",
+    "ember-qunit-notifications": "0.1.0",
+    "ember-load-initializers": "0.1.7",
+    "ember-qunit": "0.4.16",
+    "ember-resolver": "~0.1.20",
+    "jquery": "1.11.3",
+    "jquery-cookie": "1.4.0",
+    "loader.js": "ember-cli/loader.js#3.4.0",
+    "qunit": "~1.20.0",
+    "bootstrap": "3.3.6",
+    "smartadmin-library": "git+http://git.mascorp.com/unity-assets/smartadmin-library.git#v0.1.1",
+    "cmi-icons": "git+http://git.mascorp.com/swe-assets/cmi-icons.git#v0.0.2",
+    "unity-icons": "git+http://git.mascorp.com/unity-assets/unity-icons.git#v0.0.4",
+    "chosen": "https://github.com/harvesthq/chosen/releases/download/v1.1.0/chosen_v1.1.0.zip",
+    "bootstrap-unity": "git+http://git.mascorp.com/unity-assets/bootstrap-unity.git#v1.0.4",
+    "font-awesome": "4.3.0"
+  },
+  "resolutions": {
+    "jquery": "1.11.3",
+    "ember": "lts-2-4"
   }
 }

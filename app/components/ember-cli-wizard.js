@@ -1,0 +1,1 @@
+export { default } from 'ember-cli-wizard/components/ember-cli-wizard';
