@@ -9,6 +9,14 @@ export default Ember.Component.extend({
 
     animate: true,
 
+    didUpdateAttrs() {
+        this._super(...arguments);
+
+        if (this.get('wizardShowNextStep') === true) {
+            this.changeWizardStep('next');
+        }
+    },
+
     isLastStep: Ember.computed('currentStep', function() {
         if (Number(this.get('currentStep')) === this.get('wizardData.length')) {
             return true;
@@ -63,7 +71,13 @@ export default Ember.Component.extend({
                 // perform submit action
                 this.sendAction('submitAction');
             } else {
-                this.changeWizardStep('next');
+                let currentStepObj = this.get('wizardData').findBy('step_id', this.get('currentStep'));
+                if (Ember.isPresent(currentStepObj['hasAction']) && currentStepObj['hasAction'] === true) {
+                    this.set('wizardShowNextStep', false);
+                    this.sendAction('wizardStepChangeAction', currentStepObj);
+                } else {
+                    this.changeWizardStep('next');
+                }
             }
         },
 
