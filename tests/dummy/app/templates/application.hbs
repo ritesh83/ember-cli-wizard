@@ -1,0 +1,25 @@
+<div class="col-xs-12">
+    <h2 id="title">Ember CLI Wizard</h2>
+
+    {{#ember-cli-wizard
+        wizardData=wizardData
+        wizardShowNextStep=wizardShowNextStep
+        submitAction="submitAction"
+        deleteAction="deleteAction"
+        showDelete=showDelete
+        wizardStepChangeAction="wizardStepChanged"
+        as |currentState|
+    }}
+        {{#currentState.step stepId="1" wizardCurrentState=currentState}}
+            <p>Step 1</p>
+        {{/currentState.step}}
+
+        {{#currentState.step stepId="2" wizardCurrentState=currentState}}
+            <p>Step 2</p>
+        {{/currentState.step}}
+
+        {{#currentState.step stepId="3" wizardCurrentState=currentState}}
+            <p>Step 3</p>
+        {{/currentState.step}}
+    {{/ember-cli-wizard}}
+</div>

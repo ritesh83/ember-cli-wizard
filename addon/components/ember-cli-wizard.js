@@ -71,7 +71,12 @@ export default Ember.Component.extend({
                 // perform submit action
                 this.sendAction('submitAction');
             } else {
-                let currentStepObj = this.get('wizardData').findBy('step_id', this.get('currentStep'));
+                let currentStepObj = this.get('wizardData').find((item) => {
+                    if (item['step_id'] === this.get('currentStep')) {
+                        return true;
+                    }
+                });
+
                 if (Ember.isPresent(currentStepObj['hasAction']) && currentStepObj['hasAction'] === true) {
                     this.set('wizardShowNextStep', false);
                     this.sendAction('wizardStepChangeAction', currentStepObj);
