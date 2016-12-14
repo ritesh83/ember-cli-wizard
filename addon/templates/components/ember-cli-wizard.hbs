@@ -23,7 +23,7 @@
     </div>
 {{/if}}
 
-<div class="row panelWrapper {{if isAnimating 'animating'}}">
+<div class="row panel-wrapper {{if isAnimating 'animating'}}">
     {{yield (hash currentStep=currentStep animating=isAnimating direction=direction step=(component 'wizard-step'))}}
 </div>
 
