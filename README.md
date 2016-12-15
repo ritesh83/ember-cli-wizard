@@ -13,23 +13,22 @@ Demo: https://ritesh83.github.io/ember-cli-wizard/#/basic-example
 Out of the box, the bare minimum you need on the template is `wizardData`.
 
 ````Handlebars
-<div class="sample-tree">
-    {{#ember-cli-wizard
-        wizardData=wizardData        
-        as |currentState|
-    }}
-        {{#currentState.step stepId="1" wizardCurrentState=currentState}}
-            <p>Step 1</p>
-        {{/currentState.step}}
+{{#ember-cli-wizard
+    wizardData=wizardData        
+    as |currentState|
+}}
+    {{#currentState.step stepId="1" wizardCurrentState=currentState}}
+        <p>Step 1</p>
+    {{/currentState.step}}
 
-        {{#currentState.step stepId="2" wizardCurrentState=currentState}}
-            <p>Step 2</p>
-        {{/currentState.step}}
+    {{#currentState.step stepId="2" wizardCurrentState=currentState}}
+        <p>Step 2</p>
+    {{/currentState.step}}
 
-        {{#currentState.step stepId="3" wizardCurrentState=currentState}}
-            <p>Step 3</p>
-        {{/currentState.step}}
-    {{/ember-cli-wizard}}
+    {{#currentState.step stepId="3" wizardCurrentState=currentState}}
+        <p>Step 3</p>
+    {{/currentState.step}}
+{{/ember-cli-wizard}}
 </div>
 ````
 
