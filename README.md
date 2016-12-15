@@ -1,27 +1,45 @@
-# Ember-cli-wizard
+# ember-cli-wizard
+
+Ember wizard component inspired by [jquery-steps](http://www.jquery-steps.com/examples).
 
 Demo: https://ritesh83.github.io/ember-cli-wizard/#/basic-example
 
 ## Installation
 
-* `git clone <repository-url>` this repository
-* `cd ember-cli-wizard`
-* `npm install`
-* `bower install`
+    ember install ember-cli-jstree
 
-## Running
+## Usage
 
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
+Out of the box, the bare minimum you need on the template is `wizardData`.
 
-## Running Tests
+````Handlebars
+<div class="sample-tree">
+    {{#ember-cli-wizard
+        wizardData=wizardData        
+        as |currentState|
+    }}
+        {{#currentState.step stepId="1" wizardCurrentState=currentState}}
+            <p>Step 1</p>
+        {{/currentState.step}}
 
-* `npm test` (Runs `ember try:testall` to test your addon against multiple Ember versions)
-* `ember test`
-* `ember test --server`
+        {{#currentState.step stepId="2" wizardCurrentState=currentState}}
+            <p>Step 2</p>
+        {{/currentState.step}}
 
-## Building
+        {{#currentState.step stepId="3" wizardCurrentState=currentState}}
+            <p>Step 3</p>
+        {{/currentState.step}}
+    {{/ember-cli-wizard}}
+</div>
+````
 
-* `ember build`
+## Demo
 
-For more information on using ember-cli, visit [http://ember-cli.com/](http://ember-cli.com/).
+http://ritesh83.github.io/ember-cli-wizard/#/basic-example
+
+All examples are in the dummy app.
+
+* Clone this repo: `git clone`
+* Install packages: `npm install` && `bower install`
+* Run `ember s`
+* Visit the sample app at http://localhost:4200.
