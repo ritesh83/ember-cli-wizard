@@ -1,25 +1,18 @@
-<div class="col-xs-12">
-    <h2 id="title">Ember CLI Wizard</h2>
+<div style="background-color:#3e63b9; color:#fff" class="jumbotron">
+    <h1 style="text-align:center;">Ember CLI Wizard</h1>
+</div>
 
-    {{#ember-cli-wizard
-        wizardData=wizardData
-        wizardShowNextStep=wizardShowNextStep
-        submitAction="submitAction"
-        deleteAction="deleteAction"
-        showDelete=showDelete
-        wizardStepChangeAction="wizardStepChanged"
-        as |currentState|
-    }}
-        {{#currentState.step stepId="1" wizardCurrentState=currentState}}
-            <p>Step 1</p>
-        {{/currentState.step}}
+<h2 style="padding-left:35px">Examples</h2>
 
-        {{#currentState.step stepId="2" wizardCurrentState=currentState}}
-            <p>Step 2</p>
-        {{/currentState.step}}
-
-        {{#currentState.step stepId="3" wizardCurrentState=currentState}}
-            <p>Step 3</p>
-        {{/currentState.step}}
-    {{/ember-cli-wizard}}
+<div class="col-xs-12" style="margin-top:20px">
+    <div class="col-xs-3">
+        <ul class="list-group">
+            {{#link-to 'basic-example' class="list-group-item"}}Basic Example{{/link-to}}
+            {{#link-to 'form-example' class="list-group-item"}}Form Example{{/link-to}}
+            {{#link-to 'async-example' class="list-group-item"}}Async Example{{/link-to}}
+        </ul>
+    </div>
+    <div class="col-xs-9">
+        {{outlet}}
+    </div>
 </div>

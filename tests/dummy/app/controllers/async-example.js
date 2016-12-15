@@ -22,7 +22,9 @@ export default Ember.Controller.extend({
 
         wizardStepChanged(wizardStep) {
             if (wizardStep['step_id'] === '1') {
-                this.set('wizardShowNextStep', true);
+                Ember.run.later(() => {
+                    this.set('wizardShowNextStep', true);
+                }, 3000);
             }
         }
 

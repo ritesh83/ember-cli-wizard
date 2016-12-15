@@ -1,0 +1,21 @@
+<h2 style="margin-top:0px">Basic Example</h2>
+
+{{#ember-cli-wizard
+    wizardData=wizardData
+    wizardShowNextStep=wizardShowNextStep
+    submitAction="submitAction"
+    wizardStepChangeAction="wizardStepChanged"
+    as |currentState|
+}}
+    {{#currentState.step stepId="1" wizardCurrentState=currentState}}
+        <p>Step 1</p>
+    {{/currentState.step}}
+
+    {{#currentState.step stepId="2" wizardCurrentState=currentState}}
+        <p>Step 2</p>
+    {{/currentState.step}}
+
+    {{#currentState.step stepId="3" wizardCurrentState=currentState}}
+        <p>Step 3</p>
+    {{/currentState.step}}
+{{/ember-cli-wizard}}
