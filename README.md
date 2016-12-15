@@ -6,7 +6,7 @@ Demo: https://ritesh83.github.io/ember-cli-wizard/#/basic-example
 
 ## Installation
 
-    ember install ember-cli-jstree
+    ember install ember-cli-wizard
 
 ## Usage
 
