@@ -9,6 +9,7 @@ Router.map(function() {
     this.route('basic-example');
     this.route('async-example');
     this.route('form-example');
+    this.route('delete-example');
 });
 
 export default Router;
