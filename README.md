@@ -1,6 +1,6 @@
 # Ember-cli-wizard
 
-This README outlines the details of collaborating on this Ember addon.
+Demo: https://ritesh83.github.io/ember-cli-wizard/#/basic-example
 
 ## Installation
 
