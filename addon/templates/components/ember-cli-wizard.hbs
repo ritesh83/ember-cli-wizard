@@ -1,4 +1,4 @@
-{{#if showHeading}}
+{{#if showHeader}}
     <div class="row wizard-header">
         <div class="{{if showDelete 'col-xs-10' 'col-xs-12'}} no-padding">
             <ul class="nav nav-pills col-xs-12">
@@ -24,7 +24,12 @@
 {{/if}}
 
 <div class="row panel-wrapper {{if isAnimating 'animating'}}">
-    {{yield (hash currentStep=currentStep animating=isAnimating direction=direction step=(component 'wizard-step'))}}
+    {{yield (hash
+        currentStep=currentStep
+        animating=isAnimating
+        direction=direction
+        step=(component 'wizard-step'))
+    }}
 </div>
 
 <div class="row wizard-footer">

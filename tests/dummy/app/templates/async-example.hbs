@@ -2,16 +2,18 @@
 
 {{#ember-cli-wizard
     wizardData=wizardData
-    wizardShowNextStep=wizardShowNextStep
     submitAction="submitAction"
+    cancelAction="cancelAction"
+    wizardShowNextStep=wizardShowNextStep
     wizardStepChangeAction="wizardStepChanged"
+    animationDuration=300
     as |currentState|
 }}
     {{#currentState.step stepId="1" wizardCurrentState=currentState}}
-        {{#if wizardShowNextStep}}
-            <p>Step 1</p>
-        {{else}}
+        {{#if loading}}
             {{spinkit-three-bounce}}
+        {{else}}
+            <p>Step 1</p>
         {{/if}}
     {{/currentState.step}}
 

@@ -1,3 +1,6 @@
-<div class="wizard-panel {{if current 'current'}} {{if slidingOut slidingInClasses}} {{if slidingIn slidingOutClasses}}" id={{stepId}}>
-    {{yield}}
+<div class="wizard-panel
+    {{if isCurrent 'current'}}
+    {{if slidingOut slidingInClasses}}
+    {{if slidingIn slidingOutClasses}}">
+        {{yield}}
 </div>

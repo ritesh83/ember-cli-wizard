@@ -5,9 +5,15 @@ export default Ember.Component.extend({
 
     classNames: 'container-fluid well',
 
-    showHeading: true,
+    showHeader: true,
 
     animate: true,
+
+    animationDuration: 300,
+
+    isAnimating: false,
+
+    direction: null,
 
     didUpdateAttrs() {
         this._super(...arguments);
@@ -32,12 +38,6 @@ export default Ember.Component.extend({
 
         return false;
     }),
-
-    animationDuration: 300,
-
-    isAnimating: false,
-
-    direction: null,
 
     changeWizardStep(direction) {
         if (this.get('animate')) {
@@ -88,7 +88,7 @@ export default Ember.Component.extend({
 
         decrementStep() {
             if (this.get('isFirstStep')) {
-                window.history.back();
+                this.sendAction('cancelAction');
             } else {
                 this.changeWizardStep('prev');
             }

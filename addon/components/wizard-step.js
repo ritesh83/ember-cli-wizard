@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Component.extend({
     tagName: '',
 
-    current: Ember.computed('wizardCurrentState.currentStep', function() {
+    isCurrent: Ember.computed('wizardCurrentState.currentStep', function() {
         if (this.get('stepId') === this.get('wizardCurrentState.currentStep')) {
             return true;
         }
@@ -12,7 +12,7 @@ export default Ember.Component.extend({
     }),
 
     slidingOut: Ember.computed('wizardCurrentState.animating', function() {
-        if (this.get('current') && this.get('wizardCurrentState.animating')) {
+        if (this.get('isCurrent') && this.get('wizardCurrentState.animating')) {
             if (this.get('wizardCurrentState.direction') === 'next') {
                 this.set('slidingInClasses', 'exit slide-left');
             } else {

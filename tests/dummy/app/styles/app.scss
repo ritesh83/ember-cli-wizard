@@ -7,3 +7,28 @@ td {
 table {
     margin-bottom: 20px;
 }
+
+.dummy-step {
+    height: 200px;
+    background-color: #fff;
+}
+
+.panel-wrapper {
+    &.animating {
+        .exit, .enter {
+            -webkit-transition: all .3s ease-in-out;
+            -ms-transition: all .3s ease-in-out;
+            transition: all .3s ease-in-out;
+        }
+    }
+}
+
+.title-header {
+    background-color: #159957;
+    background-image: linear-gradient(120deg, #155799, #159957);
+    color: #fff;
+
+    h1 {
+	    text-align:center;
+    }
+}

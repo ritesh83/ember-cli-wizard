@@ -10,9 +10,11 @@ export default Ember.Controller.extend({
 
     wizardShowNextStep: true,
 
+    loading: false,
+
     actions: {
 
-        cancel() {
+        cancelAction() {
             //window.history.back();
         },
 
@@ -21,10 +23,12 @@ export default Ember.Controller.extend({
         },
 
         wizardStepChanged(wizardStep) {
+            this.set('loading', true);
             if (wizardStep['step_id'] === '1') {
                 Ember.run.later(() => {
                     this.set('wizardShowNextStep', true);
-                }, 3000);
+                    this.set('loading', false);
+                }, 2000);
             }
         }
 

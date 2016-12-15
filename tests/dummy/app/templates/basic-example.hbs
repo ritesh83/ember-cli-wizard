@@ -2,9 +2,8 @@
 
 {{#ember-cli-wizard
     wizardData=wizardData
-    wizardShowNextStep=wizardShowNextStep
     submitAction="submitAction"
-    wizardStepChangeAction="wizardStepChanged"
+    cancelAction="cancelAction"
     as |currentState|
 }}
     {{#currentState.step stepId="1" wizardCurrentState=currentState}}
