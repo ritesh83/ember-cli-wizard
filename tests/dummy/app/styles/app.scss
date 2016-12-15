@@ -16,9 +16,9 @@ table {
 .panel-wrapper {
     &.animating {
         .exit, .enter {
-            -webkit-transition: all .3s ease-in-out;
-            -ms-transition: all .3s ease-in-out;
-            transition: all .3s ease-in-out;
+            -webkit-transition: all .7s ease-in-out;
+            -ms-transition: all .7s ease-in-out;
+            transition: all .7s ease-in-out;
         }
     }
 }

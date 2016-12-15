@@ -1,21 +1,59 @@
 <h2 style="margin-top:0px">Form Example</h2>
 
-{{#ember-cli-wizard
-    wizardData=wizardData
-    wizardShowNextStep=wizardShowNextStep
-    submitAction="submitAction"
-    wizardStepChangeAction="wizardStepChanged"
-    as |currentState|
-}}
-    {{#currentState.step stepId="1" wizardCurrentState=currentState}}
-        <p>Step 1</p>
-    {{/currentState.step}}
+<form class="form-horizontal" role="form">
+    {{#ember-cli-wizard
+        wizardData=wizardData
+        submitAction="submitAction"
+        cancelAction="cancelAction"
+        animationDuration=700
+        as |currentState|
+    }}
+        {{#currentState.step stepId="1" wizardCurrentState=currentState}}
+            <div class="form-group">
+                <label class="col-xs-3 control-label" for="title">Username</label>
+                <div class="col-xs-9" data-test="loadable-title">
+                    {{input class="form-control" name="title" value=username}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-3 control-label" for="description">Password</label>
+                <div class="col-xs-9" data-test="loadable-description">
+                    {{input type="password" class="form-control" name="description" value=password}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-3 control-label" for="description">Confirm Password</label>
+                <div class="col-xs-9" data-test="loadable-description">
+                    {{input type="password" class="form-control" name="description" value=confirmPassword}}
+                </div>
+            </div>
+        {{/currentState.step}}
 
-    {{#currentState.step stepId="2" wizardCurrentState=currentState}}
-        <p>Step 2</p>
-    {{/currentState.step}}
-
-    {{#currentState.step stepId="3" wizardCurrentState=currentState}}
-        <p>Step 3</p>
-    {{/currentState.step}}
-{{/ember-cli-wizard}}
+        {{#currentState.step stepId="2" wizardCurrentState=currentState}}
+            <div class="form-group">
+                <label class="col-xs-3 control-label" for="title">First Name</label>
+                <div class="col-xs-9" data-test="loadable-title">
+                    {{input class="form-control" name="title" value=firstName}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-3 control-label" for="description">Last Name</label>
+                <div class="col-xs-9" data-test="loadable-description">
+                    {{input class="form-control" name="description" value=lastName}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-3 control-label" for="description">Email</label>
+                <div class="col-xs-9" data-test="loadable-description">
+                    {{input class="form-control" name="description" value=email}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-3 control-label" for="description">Address</label>
+                <div class="col-xs-9" data-test="loadable-description">
+                    {{input class="form-control" name="description" value=address}}
+                </div>
+            </div>
+        {{/currentState.step}}
+    {{/ember-cli-wizard}}
+</form>
