@@ -49,20 +49,25 @@ export default Ember.Component.extend({
 
         this.set('direction', direction);
 
-        // Stop the animation after a while
-        Ember.run.later(this, function() {
-            let currentStep;
-            if (direction === 'next') {
-                currentStep = Number(this.get('currentStep')) + 1 + '';
-            } else {
-                currentStep = Number(this.get('currentStep')) - 1 + '';
-            }
-            this.set('currentStep', currentStep);
-
-            if (this.get('animate')) {
+        if (this.get('animate')) {
+            // Stop the animation after a while
+            Ember.run.later(this, function() {
+                this._updateCurrentStep(direction);
                 this.set('isAnimating', false);
-            }
-        }, this.get('animationDuration'));
+            }, this.get('animationDuration'));
+        } else {
+            this._updateCurrentStep(direction);
+        }
+    },
+
+    _updateCurrentStep(direction) {
+        let currentStep;
+        if (direction === 'next') {
+            currentStep = Number(this.get('currentStep')) + 1 + '';
+        } else {
+            currentStep = Number(this.get('currentStep')) - 1 + '';
+        }
+        this.set('currentStep', currentStep);
     },
 
     actions: {

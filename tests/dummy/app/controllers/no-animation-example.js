@@ -16,11 +16,6 @@ export default Ember.Controller.extend({
 
         submitAction() {
             console.log('submitAction');
-        },
-
-        deleteAction() {
-            console.log('deleteAction');
-            alert('Are you sure you want to delete?');
         }
 
     }
