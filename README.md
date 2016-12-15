@@ -28,6 +28,16 @@ Demo: https://ritesh83.github.io/ember-cli-wizard/#/basic-example
     {{/currentState.step}}
 {{/ember-cli-wizard}}
 ````
+### Options
+
+| Name              | Default           | Description                        |
+|-------------------|-------------------|------------------------------------|
+| animate           | true              | Adds animation between wizard steps|
+| animationDuration | 300ms             | The animation duration between steps. Also requires a css style override. Refer to CSS section|
+| showHeader        | true              | Shows one header button for each step with active state style for the current step|
+| showDelete        | false             | Adds a delete button and sends the 'deleteAction' on click|
+| submitAction      | 'submitAction'    | The action that is sent when last next button (Finish) is clicked|
+| cancelAction      | 'cancelAction'    | The action that is sent when the first previous button (Cancel) is clicked|
 
 ## Demo
 
