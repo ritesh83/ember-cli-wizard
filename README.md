@@ -10,8 +10,6 @@ Demo: https://ritesh83.github.io/ember-cli-wizard/#/basic-example
 
 ## Usage
 
-Out of the box, the bare minimum you need on the template is `wizardData`.
-
 ````Handlebars
 {{#ember-cli-wizard
     wizardData=wizardData        
@@ -29,7 +27,6 @@ Out of the box, the bare minimum you need on the template is `wizardData`.
         <p>Step 3</p>
     {{/currentState.step}}
 {{/ember-cli-wizard}}
-</div>
 ````
 
 ## Demo
