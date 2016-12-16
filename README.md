@@ -37,18 +37,21 @@ Demo: https://ritesh83.github.io/ember-cli-wizard/#/basic-example
         {'step_id': '3', 'header_label': '3. Third Step'}
     ]
 
-The 'stepId' attribute value of each step needs to be match the 'step_id' value in the 'wizardData'.
+The 'stepId' attribute value of each step needs to match the 'step_id' value in the 'wizardData'.
 
 ### Options
 
-| Name              | Default | Description                        |
-|-------------------|---------|------------------------------------|
-| animate           | true    | Adds animation between wizard steps|
-| animationDuration | 300ms   | The animation duration between steps. Also requires a css style override. Refer to CSS section|
-| showHeader        | true    | Shows one header button for each step with active state style for the current step|
-| showDelete        | false   | Adds a delete button and sends the 'deleteAction' on click|
-| submitAction      |         | The action that is sent when last next button (Finish) is clicked|
-| cancelAction      |         | The action that is sent when the first previous button (Cancel) is clicked|
+| Name                   | Default | Description                        |
+|------------------------|---------|------------------------------------|
+| animate                | true    | Adds animation between wizard steps|
+| animationDuration      | 300ms   | The animation duration between steps. Also requires a css style override. Refer to CSS section|
+| showHeader             | true    | Shows one header button for each step with active state style for the current step|
+| showDelete             | false   | Adds a delete button and sends the 'deleteAction' on click|
+| submitAction           |         | The action that is sent when last next button (Finish) is clicked|
+| cancelAction           |         | The action that is sent when the first previous button (Cancel) is clicked|
+| deleteAction           |         | The action that is sent when the delete button is clicked|
+| wizardShowNextStep     | true    | Flag to switch to the next step after performing async operation|
+| wizardStepChangeAction |         | The action that is sent if a step has an async action|
 
 ## CSS
 
