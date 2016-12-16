@@ -36,7 +36,9 @@ Demo: https://ritesh83.github.io/ember-cli-wizard/#/basic-example
         {'step_id': '2', 'header_label': '2. Second Step'},
         {'step_id': '3', 'header_label': '3. Third Step'}
     ]
-    
+
+The 'stepId' attribute value of each step needs to be match the 'step_id' value in the 'wizardData'.
+
 ### Options
 
 | Name              | Default | Description                        |
@@ -47,6 +49,64 @@ Demo: https://ritesh83.github.io/ember-cli-wizard/#/basic-example
 | showDelete        | false   | Adds a delete button and sends the 'deleteAction' on click|
 | submitAction      |         | The action that is sent when last next button (Finish) is clicked|
 | cancelAction      |         | The action that is sent when the first previous button (Cancel) is clicked|
+
+## CSS
+
+Import the wizard.css file in your app.
+
+    @import "ember-cli-wizard/wizard";
+
+Use the following classes to override animation styles:
+
+    .panel-wrapper {
+        &.animating {
+            .exit, .enter {
+                -webkit-transition: all .7s ease-in-out;
+                -ms-transition: all .7s ease-in-out;
+                transition: all .7s ease-in-out;
+            }
+        }
+    }
+
+## Async
+
+To perform an async operation after an individual step, use the 'hasAction' property in the wizardData config and pass in the 'wizardShowNextStep' and 'wizardStepChangeAction' values.
+
+    //js
+
+    wizardData: [
+        {'step_id': '1', 'header_label': '1. First Step', 'hasAction': true},
+        {'step_id': '2', 'header_label': '2. Second Step'},
+        {'step_id': '3', 'header_label': '3. Third Step'}
+    ]
+
+    wizardShowNextStep: true,
+
+    actions: {
+
+        wizardStepChanged(wizardStep) {
+            if (wizardStep['step_id'] === '1') {
+                Ember.run.later(() => {
+                    this.set('wizardShowNextStep', true);                    
+                }, 2000);
+            }
+        }
+
+    }
+
+    //hbs
+
+    {{#ember-cli-wizard
+        wizardData=wizardData
+        submitAction="submitAction"
+        cancelAction="cancelAction"
+        wizardShowNextStep=wizardShowNextStep
+        wizardStepChangeAction="wizardStepChanged"
+        animationDuration=700
+        as |currentState|
+    }}
+
+
 
 ## Demo
 
