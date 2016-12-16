@@ -1,7 +1,7 @@
 {
   "name": "ember-cli-wizard",
-  "version": "0.1.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "version": "0.1.1",
+  "description": "Ember wizard component",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -11,7 +11,10 @@
     "start": "ember server",
     "test": "ember try:testall"
   },
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ritesh83/ember-cli-wizard.git"
+  },
   "engines": {
     "node": ">= 0.10.0"
   },
