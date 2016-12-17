@@ -37,7 +37,18 @@ Demo: https://ritesh83.github.io/ember-cli-wizard/#/basic-example
         {'step_id': '3', 'header_label': '3. Third Step'}
     ]
 
+Import the wizard.css file in your app.
+
+    @import "ember-cli-wizard/wizard";
+
+The 'step_id' is the unique identifier of each wizard step.
 The 'stepId' attribute value of each step needs to match the 'step_id' value in the 'wizardData'.
+
+### Bootstrap
+
+This addon has a dependency on ember-bootstrap.
+Follow the instructions here in order to include or exclude fonts and styles in your app:
+http://kaliber5.github.io/ember-bootstrap/getting-started/
 
 ### Options
 
@@ -54,10 +65,6 @@ The 'stepId' attribute value of each step needs to match the 'step_id' value in 
 | wizardStepChangeAction |         | The action that is sent if a step has an async action|
 
 ## CSS
-
-Import the wizard.css file in your app.
-
-    @import "ember-cli-wizard/wizard";
 
 Use the following classes to override animation styles:
 
