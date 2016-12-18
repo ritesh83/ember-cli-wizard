@@ -3,9 +3,60 @@ import Ember from 'ember';
 export default Ember.Component.extend({
     currentStep: '1',
 
-    classNames: 'container-fluid well',
+    classNameBindings: ['wellClass'],
+
+    classNames: ['container-fluid'],
 
     showHeader: true,
+
+    showWell: true,
+
+    previousBtnLabel: Ember.computed('buttonLabels', function() {
+        if (Ember.isPresent(this.get('buttonLabels.prevLabel'))) {
+            return this.get('buttonLabels.prevLabel');
+        }
+
+        return 'Previous';
+    }),
+
+    nextBtnLabel: Ember.computed('buttonLabels', function() {
+        if (Ember.isPresent(this.get('buttonLabels.nextLabel'))) {
+            return this.get('buttonLabels.nextLabel');
+        }
+
+        return 'Next';
+    }),
+
+    cancelBtnLabel: Ember.computed('buttonLabels', function() {
+        if (Ember.isPresent(this.get('buttonLabels.cancelLabel'))) {
+            return this.get('buttonLabels.cancelLabel');
+        }
+
+        return 'Cancel';
+    }),
+
+    finishBtnLabel: Ember.computed('buttonLabels', function() {
+        if (Ember.isPresent(this.get('buttonLabels.finishLabel'))) {
+            return this.get('buttonLabels.finishLabel');
+        }
+
+        return 'Finish';
+    }),
+
+    buttonLabels: {
+        'prevLabel': 'Previous',
+        'nextLabel': 'Next',
+        'finishLabel': 'Finish',
+        'cancelLabel': 'Cancel'
+    },
+
+    wellClass: Ember.computed('showWell', function() {
+        if (this.get('showWell') === true) {
+            return 'well';
+        }
+
+        return '';
+    }),
 
     animate: true,
 

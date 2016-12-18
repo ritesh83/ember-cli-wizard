@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-wizard",
-  "version": "0.1.4",
+  "version": "0.1.6",
   "description": "Ember wizard component",
   "directories": {
     "doc": "doc",
@@ -18,7 +18,7 @@
   "engines": {
     "node": ">= 0.10.0"
   },
-  "author": "",
+  "author": "Ritesh Keswani",
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "2.4.2",
@@ -41,6 +41,7 @@
     "ember-export-application-global": "1.0.5",
     "ember-load-initializers": "0.5.1",
     "ember-resolver": "2.0.3",
+    "ember-try": "0.2.8",
     "loader.js": "4.0.1"
   },
   "keywords": [

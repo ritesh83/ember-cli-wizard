@@ -20,7 +20,7 @@ export default Ember.Controller.extend({
 
         deleteAction() {
             console.log('deleteAction');
-            alert('Are you sure you want to delete?');
+            window.alert('Are you sure you want to delete?');
         }
 
     }

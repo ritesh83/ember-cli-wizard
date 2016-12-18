@@ -32,19 +32,21 @@
     }}
 </div>
 
-<div class="row wizard-footer">
-    <button class="btn btn-default" {{action "decrementStep"}}>
-        {{#if isFirstStep}}
-            Cancel
-        {{else}}
-            Previous
-        {{/if}}
-    </button>
-    <button class="btn btn-primary" {{action "incrementStep"}}>
-        {{#if isLastStep}}
-            Finish
-        {{else}}
-            Next
-        {{/if}}
-    </button>
-</div>
+{{#if wizardData}}
+    <div class="row wizard-footer">
+        <button class="btn btn-default" {{action "decrementStep"}}>
+            {{#if isFirstStep}}
+                {{cancelBtnLabel}}
+            {{else}}
+                {{previousBtnLabel}}
+            {{/if}}
+        </button>
+        <button class="btn btn-primary" {{action "incrementStep"}}>
+            {{#if isLastStep}}
+                {{finishBtnLabel}}
+            {{else}}
+                {{nextBtnLabel}}
+            {{/if}}
+        </button>
+    </div>
+{{/if}}

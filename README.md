@@ -8,6 +8,8 @@ Demo: https://ritesh83.github.io/ember-cli-wizard/#/basic-example
 
     ember install ember-cli-wizard
 
+This addon uses the 'hash' helper and hence requires ember 2.3 or above. If you would like to use it with older versions of ember, install the [hash helper polyfill](https://github.com/cibernox/ember-hash-helper-polyfill)
+
 ## Usage
 
 ````Handlebars
@@ -31,11 +33,13 @@ Demo: https://ritesh83.github.io/ember-cli-wizard/#/basic-example
 {{/ember-cli-wizard}}
 ````
 
-    wizardData: [
-        {'step_id': '1', 'header_label': '1. First Step'},
-        {'step_id': '2', 'header_label': '2. Second Step'},
-        {'step_id': '3', 'header_label': '3. Third Step'}
-    ]
+```javascript
+wizardData: [
+    {'step_id': '1', 'header_label': '1. First Step'},
+    {'step_id': '2', 'header_label': '2. Second Step'},
+    {'step_id': '3', 'header_label': '3. Third Step'}
+]
+```
 
 Import the wizard.css file in your app.
 
@@ -63,60 +67,102 @@ http://kaliber5.github.io/ember-bootstrap/getting-started/
 | deleteAction           |         | The action that is sent when the delete button is clicked|
 | wizardShowNextStep     | true    | Flag to switch to the next step after performing async operation|
 | wizardStepChangeAction |         | The action that is sent if a step has an async action|
+| showWell               | true   | Adds the bootstrap 'well' class to the component|
+| buttonLabels           | {'nextLabel': 'Next','finishLabel': 'Finish','cancelLabel': 'Cancel','prevLabel': 'Previous'} | The labels for the 4 button states|
 
 ## CSS
 
 Use the following classes to override animation styles:
 
-    .panel-wrapper {
-        &.animating {
-            .exit, .enter {
-                -webkit-transition: all .7s ease-in-out;
-                -ms-transition: all .7s ease-in-out;
-                transition: all .7s ease-in-out;
-            }
+```css
+.panel-wrapper {
+    &.animating {
+        .exit, .enter {
+            -webkit-transition: all .7s ease-in-out;
+            -ms-transition: all .7s ease-in-out;
+            transition: all .7s ease-in-out;
         }
     }
+}
+```
+
+By default the addon adds the bootstrap 'well' class to the main component. To remove the class set 'showWell' to false.
+
+```Handlebars
+{{#ember-cli-wizard
+    showWell=false
+}}
+```
+
+To override the default styles of the wizard steps, use the following classes:
+
+```css
+.panel-wrapper {
+    height: 450px;
+    background-color: #ececec;
+}
+```
 
 ## Async
 
 To perform an async operation after an individual step, use the 'hasAction' property in the wizardData config and pass in the 'wizardShowNextStep' and 'wizardStepChangeAction' values.
 
-    //js
+```javascript
+//js
 
-    wizardData: [
-        {'step_id': '1', 'header_label': '1. First Step', 'hasAction': true},
-        {'step_id': '2', 'header_label': '2. Second Step'},
-        {'step_id': '3', 'header_label': '3. Third Step'}
-    ]
+wizardData: [
+    {'step_id': '1', 'header_label': '1. First Step', 'hasAction': true},
+    {'step_id': '2', 'header_label': '2. Second Step'},
+    {'step_id': '3', 'header_label': '3. Third Step'}
+]
 
-    wizardShowNextStep: true,
+wizardShowNextStep: true,
 
-    actions: {
+actions: {
 
-        wizardStepChanged(wizardStep) {
-            if (wizardStep['step_id'] === '1') {
-                Ember.run.later(() => {
-                    this.set('wizardShowNextStep', true);                    
-                }, 2000);
-            }
+    wizardStepChanged(wizardStep) {
+        if (wizardStep['step_id'] === '1') {
+            Ember.run.later(() => {
+                this.set('wizardShowNextStep', true);                    
+            }, 2000);
         }
-
     }
 
-    //hbs
+}
+```
 
-    {{#ember-cli-wizard
-        wizardData=wizardData
-        submitAction="submitAction"
-        cancelAction="cancelAction"
-        wizardShowNextStep=wizardShowNextStep
-        wizardStepChangeAction="wizardStepChanged"
-        animationDuration=700
-        as |currentState|
-    }}
+```Handlebars
+//hbs
 
+{{#ember-cli-wizard
+    wizardData=wizardData
+    submitAction="submitAction"
+    cancelAction="cancelAction"
+    wizardShowNextStep=wizardShowNextStep
+    wizardStepChangeAction="wizardStepChanged"
+    animationDuration=700
+    as |currentState|
+}}
+```
 
+### Buttons
+
+To customize the button labels, set the 'buttonLabels' hash
+
+```Handlebars
+{{#ember-cli-wizard
+    buttonLabels=customButtonLabels
+}}
+```
+
+```javascript
+customButtonLabels: {
+    'nextLabel': 'Next',
+    'finishLabel': 'Finish',
+    'cancelLabel': 'Cancel',
+    'prevLabel': 'Previous'
+},
+```
 
 ## Demo
 
