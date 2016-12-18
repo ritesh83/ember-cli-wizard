@@ -1,6 +1,6 @@
 # ember-cli-wizard
 
-[![Travis-CI status](https://travis-ci.org/ritesh83/ember-cli-wizard.svg?branch=master)](https://travis-ci.org/ritesh83/ember-cli-wizard)[![Ember Observer Score](http://emberobserver.com/badges/ember-cli-wizard.svg)](http://emberobserver.com/addons/ember-cli-wizard)
+[![Travis-CI status](https://travis-ci.org/ritesh83/ember-cli-wizard.svg?branch=master)](https://travis-ci.org/ritesh83/ember-cli-wizard) [![Ember Observer Score](http://emberobserver.com/badges/ember-cli-wizard.svg)](http://emberobserver.com/addons/ember-cli-wizard)
 
 Ember wizard component inspired by [jquery-steps](http://www.jquery-steps.com/examples).
 
