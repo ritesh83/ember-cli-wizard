@@ -8,7 +8,7 @@ Demo: https://ritesh83.github.io/ember-cli-wizard/#/basic-example
 
     ember install ember-cli-wizard
 
-This addon uses the 'hash' helper and hence requires ember 2.3 or above. If you would like to use it with older versions of ember, install the [hash helper polyfill](https://github.com/cibernox/ember-hash-helper-polyfill)
+This addon uses the 'hash' helper and hence requires ember 2.3 or above. If you would like to use it with older versions of ember, install the [hash helper polyfill](https://github.com/cibernox/ember-hash-helper-polyfill).
 
 ## Usage
 
@@ -68,7 +68,7 @@ http://kaliber5.github.io/ember-bootstrap/getting-started/
 | wizardShowNextStep     | true    | Flag to switch to the next step after performing async operation|
 | wizardStepChangeAction |         | The action that is sent if a step has an async action|
 | showWell               | true   | Adds the bootstrap 'well' class to the component|
-| buttonLabels           | {'nextLabel': 'Next','finishLabel': 'Finish','cancelLabel': 'Cancel','prevLabel': 'Previous'} | The labels for the 4 button states|
+| buttonLabels           | {'nextLabel':'Next', 'finishLabel':'Finish', 'cancelLabel':'Cancel', 'prevLabel':'Previous'} | The labels for the 4 button states|
 
 ## CSS
 
