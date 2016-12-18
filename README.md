@@ -1,5 +1,7 @@
 # ember-cli-wizard
 
+[Ember Observer Score](http://emberobserver.com/badges/ember-cli-wizard.svg)](http://emberobserver.com/addons/ember-cli-wizard)
+
 Ember wizard component inspired by [jquery-steps](http://www.jquery-steps.com/examples).
 
 Demo: https://ritesh83.github.io/ember-cli-wizard/#/basic-example
