@@ -54,7 +54,7 @@ The 'stepId' attribute value of each step needs to match the 'step_id' value in 
 
 This addon has a dependency on ember-bootstrap.
 Follow the instructions here in order to include or exclude fonts and styles in your app:
-http://kaliber5.github.io/ember-bootstrap/getting-started/
+http://www.ember-bootstrap.com/#/getting-started
 
 ### Options
 
