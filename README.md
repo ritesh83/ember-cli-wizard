@@ -77,7 +77,7 @@ The 'stepId' attribute value of each step needs to match the 'step_id' value in 
 
 This addon has a dependency on ember-bootstrap.
 
-**Note: The newer version (0.1.7) of this addon no longer brings in ember-boostrap as a dependency on ember install.
+**Note: The newer version (0.1.7) of this addon no longer brings in ember-bootstrap as a dependency on ember install.
 You need to install it separately.
 (Reason: A lot of projects already have bootstrap installed and hence run into build time merge errors.)**
  
