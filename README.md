@@ -35,6 +35,29 @@ This addon uses the 'hash' helper and hence requires ember 2.3 or above. If you 
 {{/ember-cli-wizard}}
 ````
 
+To use this addon with ember version < 2.3, use the 'wizard-step' component instead of 'currentState.step' (reason: ember versions below 2.3 do not support contextual components)
+
+````Handlebars
+{{#ember-cli-wizard
+    wizardData=wizardData
+    submitAction='submitAction'
+    cancelAction='cancelAction'
+    as |currentState|
+}}
+    {{#wizard-step stepId="1" wizardCurrentState=currentState}}
+        <p>Step 1</p>
+    {{/wizard-step}}
+
+    {{#wizard-step stepId="2" wizardCurrentState=currentState}}
+        <p>Step 2</p>
+    {{/wizard-step}}
+
+    {{#wizard-step stepId="3" wizardCurrentState=currentState}}
+        <p>Step 3</p>
+    {{/wizard-step}}
+{{/ember-cli-wizard}}
+````
+
 ```javascript
 wizardData: [
     {'step_id': '1', 'header_label': '1. First Step'},
@@ -53,6 +76,11 @@ The 'stepId' attribute value of each step needs to match the 'step_id' value in 
 ### Bootstrap
 
 This addon has a dependency on ember-bootstrap.
+
+**Note: The newer version (0.1.7) of this addon no longer brings in ember-boostrap as a dependency on ember install.
+You need to install it separately.
+(Reason: A lot of projects already have bootstrap installed and hence run into build time merge errors.)**
+ 
 Follow the instructions here in order to include or exclude fonts and styles in your app:
 http://www.ember-bootstrap.com/#/getting-started
 
@@ -63,13 +91,15 @@ http://www.ember-bootstrap.com/#/getting-started
 | animate                | true    | Adds animation between wizard steps|
 | animationDuration      | 300ms   | The animation duration between steps. Also requires a css style override. Refer to CSS section|
 | showHeader             | true    | Shows one header button for each step with active state style for the current step|
+| useRoundedNav          | false   | Change nav steps shape to circles instead of rectangles|
+| headerStepsSizeClass   | col-xs-4| The css class to apply to each header nav step. Based on the number of steps, one may need to change the width and other styles of each step header|
 | showDelete             | false   | Adds a delete button and sends the 'deleteAction' on click|
 | submitAction           |         | The action that is sent when last next button (Finish) is clicked|
 | cancelAction           |         | The action that is sent when the first previous button (Cancel) is clicked|
 | deleteAction           |         | The action that is sent when the delete button is clicked|
 | wizardShowNextStep     | true    | Flag to switch to the next step after performing async operation|
 | wizardStepChangeAction |         | The action that is sent if a step has an async action|
-| showWell               | true   | Adds the bootstrap 'well' class to the component|
+| showWell               | false   | Adds the bootstrap 'well' class to the component|
 | buttonLabels           | {'nextLabel':'Next', 'finishLabel':'Finish', 'cancelLabel':'Cancel', 'prevLabel':'Previous'} | The labels for the 4 button states|
 
 ## CSS
@@ -88,21 +118,28 @@ Use the following classes to override animation styles:
 }
 ```
 
-By default the addon adds the bootstrap 'well' class to the main component. To remove the class set 'showWell' to false.
+To add the bootstrap 'well' class to the main component, set 'showWell' to true.
 
 ```Handlebars
 {{#ember-cli-wizard
-    showWell=false
+    showWell=true
 }}
 ```
 
-To override the default styles of the wizard steps, use the following classes:
+To use rounded nav steps, set 'useRoundedNav' to true.
 
-```css
-.panel-wrapper {
-    height: 450px;
-    background-color: #ececec;
-}
+```Handlebars
+{{#ember-cli-wizard
+    useRoundedNav=true
+}}
+```
+
+By default the addon sets the steps class to the bootstrap 'col-xs-4'. To change the width or other styles of the step, set the 'headerStepsSizeClass' to a custom css class.
+
+```Handlebars
+{{#ember-cli-wizard
+    headerStepsSizeClass="custom-header-steps"
+}}
 ```
 
 ## Async

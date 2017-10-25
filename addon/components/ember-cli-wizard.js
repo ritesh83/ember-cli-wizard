@@ -10,7 +10,7 @@ export default Ember.Component.extend({
 
     showHeader: true,
 
-    showWell: true,
+    showWell: false,
     
     isValid: true,
     
