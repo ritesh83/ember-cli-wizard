@@ -3,9 +3,18 @@
         <div class="{{if showDelete 'col-xs-10' 'col-xs-12'}} no-padding">
             <ul class="nav nav-pills col-xs-12">
                 {{#each wizardData as |item|}}
-                    <li role="presentation" class="{{if (eq currentStep item.step_id) 'active' 'disabled'}}">
-                        <a href="#" {{action 'handleNavClick'}}>{{item.header_label}}</a>
-                    </li>
+                    {{#if showRoundedNav}}
+                        <li role="presentation" class="rounded-nav-step {{headerStepsSizeClass}} {{if (eq currentStep item.step_id) 'active' (if (gt currentStep item.step_id) 'completed' 'disabled')}}">
+                            <a class="rounded-nav" href="#" {{action 'handleNavClick'}}>
+                                {{item.step_id}}
+                            </a>
+                            <p class="rounded-nav-label">{{item.header_label}}</p>
+                        </li>
+                    {{else}}
+                        <li role="presentation" class="{{headerStepsSizeClass}} {{if (eq currentStep item.step_id) 'active' (if (gt currentStep item.step_id) 'completed' 'disabled')}}">
+                            <a href="#" {{action 'handleNavClick'}}>{{item.header_label}}</a>
+                        </li>
+                    {{/if}}                    
                 {{/each}}
             </ul>
         </div>
@@ -24,12 +33,20 @@
 {{/if}}
 
 <div class="row panel-wrapper {{if isAnimating 'animating'}}">
-    {{yield (hash
-        currentStep=currentStep
-        animating=isAnimating
-        direction=direction
-        step=(component 'wizard-step'))
-    }}
+    {{#if useContextualComponents}}
+        {{yield (hash
+            currentStep=currentStep
+            animating=isAnimating
+            direction=direction
+            step=(component 'wizard-step'))
+        }}
+    {{else}}
+        {{yield (hash
+            currentStep=currentStep
+            animating=isAnimating
+            direction=direction)
+        }}
+    {{/if}}
 </div>
 
 {{#if wizardData}}
@@ -41,7 +58,7 @@
                 {{previousBtnLabel}}
             {{/if}}
         </button>
-        <button class="btn btn-primary" {{action "incrementStep"}}>
+        <button class="btn btn-primary {{nextBtnDisabled}}" {{action "incrementStep"}}>
             {{#if isLastStep}}
                 {{finishBtnLabel}}
             {{else}}

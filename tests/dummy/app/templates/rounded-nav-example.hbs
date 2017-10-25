@@ -1,11 +1,11 @@
-<h2 style="margin-top:0px">No Animation Example</h2>
+<h2 style="margin-top:0px">Rounded Nav Example</h2>
 
 {{#ember-cli-wizard
     wizardData=wizardData
     submitAction="submitAction"
     cancelAction="cancelAction"
-    animate=false
-    headerStepsSizeClass="custom-header-steps"
+    animationDuration=700
+    useRoundedNav=true
     as |currentState|
 }}
     {{#currentState.step stepId="1" wizardCurrentState=currentState}}

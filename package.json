@@ -42,17 +42,18 @@
     "ember-load-initializers": "0.5.1",
     "ember-resolver": "2.0.3",
     "ember-try": "0.2.8",
-    "loader.js": "4.0.1"
+    "loader.js": "4.0.1",
+    "ember-bootstrap": "0.11.3"
   },
   "keywords": [
     "ember-addon",
     "wizard"
   ],
-  "dependencies": {
+  "dependencies": {    
     "ember-cli-babel": "^5.1.6",
     "ember-cli-htmlbars": "^1.0.3",
-    "ember-bootstrap": "0.11.3",
-    "ember-truth-helpers": "1.2.0"
+    "ember-truth-helpers": "1.2.0",
+    "ember-version-is": "0.0.3"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config",

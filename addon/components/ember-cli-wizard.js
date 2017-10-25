@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import emberVersionIs from 'ember-version-is';
 
 export default Ember.Component.extend({
     currentStep: '1',
@@ -10,6 +11,24 @@ export default Ember.Component.extend({
     showHeader: true,
 
     showWell: true,
+    
+    isValid: true,
+    
+    nextBtnDisabled: Ember.computed('isValid', function() {
+        if (this.get('isValid') === true) {
+            return '';
+        } else {
+            return 'disabled';
+        }
+    }),
+    
+    useContextualComponents: Ember.computed(function() {
+        if (emberVersionIs('greaterThanOrEqualTo', "2.3.0")) {
+            return true;
+        }
+        
+        return false;
+    }),
 
     previousBtnLabel: Ember.computed('buttonLabels', function() {
         if (Ember.isPresent(this.get('buttonLabels.prevLabel'))) {
@@ -120,24 +139,36 @@ export default Ember.Component.extend({
         }
         this.set('currentStep', currentStep);
     },
+    
+    showRoundedNav: Ember.computed('useRoundedNav', function() {
+        if (this.get('useRoundedNav') === true) {
+            return true;
+        }
+
+        return false;
+    }),
+    
+    headerStepsSizeClass: 'col-xs-4',
 
     actions: {
         incrementStep() {
-            if (this.get('isLastStep')) {
-                // perform submit action
-                this.sendAction('submitAction');
-            } else {
-                let currentStepObj = this.get('wizardData').find((item) => {
-                    if (item['step_id'] === this.get('currentStep')) {
-                        return true;
-                    }
-                });
-
-                if (Ember.isPresent(currentStepObj['hasAction']) && currentStepObj['hasAction'] === true) {
-                    this.set('wizardShowNextStep', false);
-                    this.sendAction('wizardStepChangeAction', currentStepObj);
+            if (this.get('isValid') === true) {
+                if (this.get('isLastStep')) {
+                    // perform submit action
+                    this.sendAction('submitAction');
                 } else {
-                    this.changeWizardStep('next');
+                    let currentStepObj = this.get('wizardData').find((item) => {
+                        if (item['step_id'] === this.get('currentStep')) {
+                            return true;
+                        }
+                    });
+
+                    if (Ember.isPresent(currentStepObj['hasAction']) && currentStepObj['hasAction'] === true) {
+                        this.set('wizardShowNextStep', false);
+                        this.sendAction('wizardStepChangeAction', currentStepObj);
+                    } else {
+                        this.changeWizardStep('next');
+                    }
                 }
             }
         },
