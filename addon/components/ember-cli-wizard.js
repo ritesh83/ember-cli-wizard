@@ -11,9 +11,9 @@ export default Ember.Component.extend({
     showHeader: true,
 
     showWell: false,
-    
+
     isValid: true,
-    
+
     nextBtnDisabled: Ember.computed('isValid', function() {
         if (this.get('isValid') === true) {
             return '';
@@ -21,41 +21,73 @@ export default Ember.Component.extend({
             return 'disabled';
         }
     }),
-    
+
     useContextualComponents: Ember.computed(function() {
-        if (emberVersionIs('greaterThanOrEqualTo', "2.3.0")) {
+        if (emberVersionIs('greaterThanOrEqualTo', '2.3.0')) {
             return true;
         }
-        
+
         return false;
     }),
 
-    previousBtnLabel: Ember.computed('buttonLabels', function() {
-        if (Ember.isPresent(this.get('buttonLabels.prevLabel'))) {
+    previousBtnLabel: Ember.computed('buttonLabels', 'currentStep', function() {
+        let stepInfo = this.get('wizardData').find((step) => {
+            if (this.get('currentStep') === step['step_id']) {
+                return true;
+            }
+        });
+
+        if (Ember.isPresent(stepInfo['prev_label'])) {
+            return stepInfo['prev_label'];
+        } else if (Ember.isPresent(this.get('buttonLabels.prevLabel'))) {
             return this.get('buttonLabels.prevLabel');
         }
 
         return 'Previous';
     }),
 
-    nextBtnLabel: Ember.computed('buttonLabels', function() {
-        if (Ember.isPresent(this.get('buttonLabels.nextLabel'))) {
+    nextBtnLabel: Ember.computed('buttonLabels', 'currentStep', function() {
+        let stepInfo = this.get('wizardData').find((step) => {
+            if (this.get('currentStep') === step['step_id']) {
+                return true;
+            }
+        });
+
+        if (Ember.isPresent(stepInfo['next_label'])) {
+            return stepInfo['next_label'];
+        } else if (Ember.isPresent(this.get('buttonLabels.nextLabel'))) {
             return this.get('buttonLabels.nextLabel');
         }
 
         return 'Next';
     }),
 
-    cancelBtnLabel: Ember.computed('buttonLabels', function() {
-        if (Ember.isPresent(this.get('buttonLabels.cancelLabel'))) {
+    cancelBtnLabel: Ember.computed('buttonLabels', 'currentStep', function() {
+        let stepInfo = this.get('wizardData').find((step) => {
+            if (this.get('currentStep') === step['step_id']) {
+                return true;
+            }
+        });
+
+        if (Ember.isPresent(stepInfo['cancel_label'])) {
+            return stepInfo['cancel_label'];
+        } else if (Ember.isPresent(this.get('buttonLabels.cancelLabel'))) {
             return this.get('buttonLabels.cancelLabel');
         }
 
         return 'Cancel';
     }),
 
-    finishBtnLabel: Ember.computed('buttonLabels', function() {
-        if (Ember.isPresent(this.get('buttonLabels.finishLabel'))) {
+    finishBtnLabel: Ember.computed('buttonLabels', 'currentStep', function() {
+        let stepInfo = this.get('wizardData').find((step) => {
+            if (this.get('currentStep') === step['step_id']) {
+                return true;
+            }
+        });
+
+        if (Ember.isPresent(stepInfo['finish_label'])) {
+            return stepInfo['finish_label'];
+        } else if (Ember.isPresent(this.get('buttonLabels.finishLabel'))) {
             return this.get('buttonLabels.finishLabel');
         }
 
@@ -63,10 +95,10 @@ export default Ember.Component.extend({
     }),
 
     buttonLabels: {
-        'prevLabel': 'Previous',
-        'nextLabel': 'Next',
-        'finishLabel': 'Finish',
-        'cancelLabel': 'Cancel'
+        prevLabel: 'Previous',
+        nextLabel: 'Next',
+        finishLabel: 'Finish',
+        cancelLabel: 'Cancel'
     },
 
     wellClass: Ember.computed('showWell', function() {
@@ -121,10 +153,14 @@ export default Ember.Component.extend({
 
         if (this.get('animate')) {
             // Stop the animation after a while
-            Ember.run.later(this, function() {
-                this._updateCurrentStep(direction);
-                this.set('isAnimating', false);
-            }, this.get('animationDuration'));
+            Ember.run.later(
+                this,
+                function() {
+                    this._updateCurrentStep(direction);
+                    this.set('isAnimating', false);
+                },
+                this.get('animationDuration')
+            );
         } else {
             this._updateCurrentStep(direction);
         }
@@ -139,7 +175,7 @@ export default Ember.Component.extend({
         }
         this.set('currentStep', currentStep);
     },
-    
+
     showRoundedNav: Ember.computed('useRoundedNav', function() {
         if (this.get('useRoundedNav') === true) {
             return true;
@@ -147,7 +183,7 @@ export default Ember.Component.extend({
 
         return false;
     }),
-    
+
     headerStepsSizeClass: 'col-xs-4',
 
     actions: {
